@@ -16,7 +16,7 @@ import threading
 import os
 import sys
 
-JS_BEATIFY_PARENT_FOLDER = r'/usr/local/lib/python2.7/dist-packages'
+JS_BEAUTIFY_PARENT_FOLDER = r'/usr/local/lib/python2.7/dist-packages'
 PATH_EXTRACTOR = 'dependencies/jsextractor.rb'
 PATH_TMP_FILE = "db/tmp.js"
 
@@ -72,7 +72,7 @@ class BurpExtender(IBurpExtender, IContextMenuFactory):
   def jsbeautify(self,host):
       try:
           filename = str(os.times()[4])+"-"+host+".js"
-          cmd = subprocess.Popen("{}/js-beautify {}".format(JS_BEATIFY_PARENT_FOLDER, PATH_TMP_FILE), shell=True, stdin=subprocess.PIPE, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+          cmd = subprocess.Popen("{}/js-beautify {}".format(JS_BEAUTIFY_PARENT_FOLDER, PATH_TMP_FILE), shell=True, stdin=subprocess.PIPE, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
           self.save_to_file(filename,cmd.stdout.read())
           print "A version of this js file has been beautified and saved at\n "+os.getcwd()+"db/files-beautified/"+filename
       except:
